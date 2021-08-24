@@ -33,13 +33,22 @@ public class PojoGenerator {
 		GenerationConfig config = new DefaultGenerationConfig() {
 			@Override
 			public boolean isGenerateBuilders() { // set config option by overriding method
-				return true;
+				return false;
 			}
 
+			@Override
 			public SourceType getSourceType() {
 				return SourceType.JSON;
 			}
+			
+			@Override
+		    public boolean isIncludeAdditionalProperties() {
+		        return false;
+		    }
+
+			
 		};
+		
 		SchemaMapper mapper = new SchemaMapper(
 				new RuleFactory(config, new Jackson2Annotator(config), new SchemaStore()), new SchemaGenerator());
 		mapper.generate(codeModel, className, packageName, source);

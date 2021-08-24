@@ -3,3 +3,5 @@ test-output
 .project
 .settings
 .classpath
+./target
+./test-ouput
